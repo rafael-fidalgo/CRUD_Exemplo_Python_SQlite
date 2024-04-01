@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo CRUD</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Listar todos os itens cadastrados</h1>
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Estrela Principal</th>
+                    <th scope="col">Distância</th>
+                    <th scope="col">Imagem</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for galaxia in dados %}
+                <tr>
+                    <td>{{ galaxia[0] }}</td>
+                    <td>{{ galaxia[1] }}</td>
+                    <td>{{ galaxia[2] }}</td>
+                    <td>{{ galaxia[3] }}</td>
+                    <td><img src="{{ galaxia[4] }}" alt="Imagem da Galáxia" style="max-width: 100px;"></td>
+                    <td>
+                        <!-- Botão Editar -->
+                        <form action="{{ url_for('editar', id=galaxia[0]) }}" method="get" style="display: inline-block;">
+                            <button type="submit" class="btn btn-primary">Editar</button>
+                        </form>
+                        <!-- Botão Deletar -->
+                        <form action="{{ url_for('deletar_galaxia_route', id=galaxia[0]) }}" method="post" style="display: inline-block;">
+                            <button type="submit" class="btn btn-danger">Deletar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-center">
+            <form action="{{ url_for('criar') }}" method="GET">
+                <button type="submit" class="btn btn-primary mt-3">Cadastrar Nova</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
