@@ -1,2 +1,2 @@
-# CRUDenPythonExemplo
-Esse é um exemplo inicial de um CRUD em python utilizando o flask.
+# CRUD_Exemplo_Python_SQlite
+Exemplo de CRUD utilizando um banco de dados, nesse caso o banco de dados SQlite.
